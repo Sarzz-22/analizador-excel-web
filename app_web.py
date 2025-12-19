@@ -21,11 +21,11 @@ def procesar_datos_excel(archivo_cargado):
     try:
         df = pd.read_excel(archivo_cargado, engine=motor)
     except Exception as e:
-        st.error(f"❌ Error al leer el archivo: {e}")
+        st.error(f"❌ Error al leer el archivo: {e} Habilita la edicion del Excel ❤️")
         return None
 
     if COLUMNA_INICIADOR not in df.columns or COLUMNA_DEPOSITAR not in df.columns:
-        st.error(f"❌ No se encontraron las columnas '{COLUMNA_INICIADOR}' y '{COLUMNA_DEPOSITAR}' Habilita la edicion del Excel ❤️.")
+        st.error(f"❌ No se encontraron las columnas '{COLUMNA_INICIADOR}' y '{COLUMNA_DEPOSITAR}'.")
         return None
     
     df[COLUMNA_DEPOSITAR] = pd.to_numeric(df[COLUMNA_DEPOSITAR], errors='coerce')
@@ -82,6 +82,7 @@ if archivo:
         
     elif resultados is not None:
         st.warning("No se encontraron depósitos con terminación .01")
+
 
 
 
